@@ -1,0 +1,24 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tech-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0891b2"/> <!-- Cyan-600 -->
+      <stop offset="100%" stop-color="#0f172a"/> <!-- Slate-900 -->
+    </linearGradient>
+    <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Hexagon Shape -->
+  <path d="M256 30 L472 150 V362 L256 482 L40 362 V150 Z" fill="url(#tech-grad)" stroke="#22d3ee" stroke-width="12" filter="url(#neon-glow)"/>
+  
+  <!-- Inner Border for detail -->
+  <path d="M256 55 L450 162 V350 L256 457 L62 350 V162 Z" fill="none" stroke="rgba(34, 211, 238, 0.3)" stroke-width="4"/>
+
+  <!-- Text -->
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Courier New, monospace" font-weight="900" font-size="200" fill="#ffffff" style="text-shadow: 0 0 10px rgba(34, 211, 238, 0.8);">UC</text>
+</svg>
