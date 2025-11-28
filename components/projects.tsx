@@ -1,6 +1,8 @@
+
 "use client"
 
 import { useState } from "react"
+import { Github } from "lucide-react"
 
 export default function Projects() {
   const [expandedProjects, setExpandedProjects] = useState<number[]>([0])
@@ -30,6 +32,7 @@ export default function Projects() {
       ],
       tech: ["Python", "OpenAI API", "Selenium", "Machine Learning"],
       type: "Security Tool",
+      github: "https://github.com/uditchhipa/Autored-Ai",
     },
     {
       title: "Smart Network Observability Dashboard",
@@ -42,6 +45,7 @@ export default function Projects() {
       ],
       tech: ["Python", "Flask", "Ngrok", "Networking"],
       type: "Monitoring",
+      github: "https://github.com/uditchhipa/Advanced-Object-Tracker",
     },
     {
       title: "High-Performance Honeypot (Deception Tech)",
@@ -54,6 +58,7 @@ export default function Projects() {
       ],
       tech: ["Go (Golang)", "Concurrency", "Threat Intelligence"],
       type: "Deception Tech",
+      github: "https://github.com/uditchhipa/chatty-honeypot",
     },
     {
       title: "Forensic Data Analysis Pipeline",
@@ -66,6 +71,7 @@ export default function Projects() {
       ],
       tech: ["Python", "Pandas", "SQL", "Data Analysis"],
       type: "Forensics",
+      github: "https://github.com/uditchhipa/ipdr_analyse",
     },
   ]
 
@@ -132,10 +138,10 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Report Button */}
-                {/* @ts-ignore */}
-                {project.report && (
-                  <div className="pt-4">
+                {/* Actions */}
+                <div className="flex flex-wrap gap-3 pt-4">
+                  {/* @ts-ignore */}
+                  {project.report && (
                     <a
                       /* @ts-ignore */
                       href={project.report}
@@ -148,8 +154,22 @@ export default function Projects() {
                       </svg>
                       View Security Report
                     </a>
-                  </div>
-                )}
+                  )}
+
+                  {/* @ts-ignore */}
+                  {project.github && (
+                    <a
+                      /* @ts-ignore */
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/50 text-foreground rounded-lg hover:bg-secondary transition-colors font-medium text-sm border border-border"
+                    >
+                      <Github className="w-4 h-4" />
+                      View Source
+                    </a>
+                  )}
+                </div>
               </div>
             )}
           </div>
