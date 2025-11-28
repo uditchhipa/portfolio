@@ -79,11 +79,37 @@ export default function Home() {
       />
 
 
-      <main className="flex flex-1 relative z-20">
-        {/* Sidebar */}
+      <main className="flex flex-1 relative z-20 pt-16 md:pt-0">
+        {/* Mobile Top Navigation */}
+        <div className="fixed top-0 left-0 w-full h-16 bg-card/80 backdrop-blur-md border-b border-border z-50 flex items-center justify-between px-4 md:hidden">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold border border-primary/50 text-sm">
+              UC
+            </div>
+            <span className="font-bold text-base tracking-wide">Portfolio</span>
+          </div>
+          <div className="flex gap-1 overflow-x-auto no-scrollbar">
+            {sections.map((section) => {
+              const Icon = section.icon
+              const isActive = activeSection === section.id
+              return (
+                <button
+                  key={section.id}
+                  onClick={() => handleTabClick(section.id)}
+                  className={`p-2 rounded-lg transition-colors ${isActive ? "text-primary bg-primary/10" : "text-muted-foreground hover:text-foreground"}`}
+                  aria-label={section.label}
+                >
+                  <Icon className="w-5 h-5" />
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Sidebar (Desktop Only) */}
         <div
-          className={`fixed left-0 top-0 h-screen transition-all duration-300 border-r border-border bg-card/50 backdrop-blur-sm ${sidebarVisible ? "w-72" : "w-0"
-            } overflow-hidden flex flex-col z-40`}
+          className={`hidden md:flex fixed left-0 top-0 h-screen transition-all duration-300 border-r border-border bg-card/50 backdrop-blur-sm ${sidebarVisible ? "w-72" : "w-0"
+            } overflow-hidden flex-col z-40`}
         >
           {/* Sidebar Header */}
           <div className="flex items-center justify-between p-6 border-b border-border/50">
@@ -121,11 +147,11 @@ export default function Home() {
           </nav>
         </div>
 
-        {/* Toggle button when sidebar is hidden */}
+        {/* Toggle button when sidebar is hidden (Desktop Only) */}
         {!sidebarVisible && (
           <button
             onClick={() => setSidebarVisible(true)}
-            className="fixed left-4 top-4 w-10 h-10 rounded-full bg-cyan-500 hover:bg-cyan-400 z-50 flex items-center justify-center text-white transition-colors shadow-lg shadow-cyan-500/20"
+            className="hidden md:flex fixed left-4 top-4 w-10 h-10 rounded-full bg-cyan-500 hover:bg-cyan-400 z-50 items-center justify-center text-white transition-colors shadow-lg shadow-cyan-500/20"
             aria-label="Show sidebar"
           >
             <ChevronRight className="w-6 h-6" />
@@ -133,7 +159,7 @@ export default function Home() {
         )}
 
         {/* Main content area */}
-        <div className={`flex-1 flex flex-col transition-all duration-300 ${sidebarVisible ? "ml-72" : "ml-0"}`}>
+        <div className={`flex-1 flex flex-col transition-all duration-300 ${sidebarVisible ? "md:ml-72" : "md:ml-0"} ml-0`}>
           <div ref={contentRef} className="flex-1 w-full h-screen overflow-y-auto scroll-smooth relative">
             <div className="max-w-5xl mx-auto px-6 lg:px-12 py-12">
               <div id="section-about" className="mb-20 scroll-mt-24">

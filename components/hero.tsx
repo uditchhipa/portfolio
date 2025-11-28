@@ -48,6 +48,12 @@ export default function Hero() {
                 <span className="px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-400 text-[10px] md:text-xs font-medium border border-purple-500/20">
                   Security Researcher
                 </span>
+                <span className="px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 text-[10px] md:text-xs font-medium border border-blue-500/20">
+                  Cybersecurity
+                </span>
+                <span className="px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 text-[10px] md:text-xs font-medium border border-rose-500/20">
+                  Red Teaming
+                </span>
               </div>
 
               {/* Buttons */}
@@ -108,7 +114,7 @@ export default function Hero() {
                 <ul className="space-y-1.5 text-muted-foreground text-sm">
                   <li className="flex gap-2">
                     <span className="text-primary mt-1">•</span>
-                    <span><strong className="text-foreground">Backend Systems:</strong> High-concurrency network services built in Go (Golang).</span>
+                    <span><strong className="text-foreground">Backend Systems:</strong> High-concurrency network services built in Go (Golang) and Python.</span>
                   </li>
                   <li className="flex gap-2">
                     <span className="text-primary mt-1">•</span>
