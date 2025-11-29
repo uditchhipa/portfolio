@@ -86,60 +86,73 @@ export default function Projects() {
         <p className="text-muted-foreground">Building security tools and solutions that matter</p>
       </div>
 
-      <div className="space-y-4">
+      <div className="grid md:grid-cols-2 gap-6">
         {projects.map((project, index) => (
-          <div key={index} className="border border-border rounded-lg overflow-hidden bg-card">
-            {/* Project Header - Always Visible */}
-            <button
-              onClick={() => toggleProject(index)}
-              className="w-full p-6 flex items-center justify-between hover:bg-card/80 transition-colors text-left group"
-            >
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-foreground group-hover:text-accent transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-accent mt-1">{project.type}</p>
+          <div key={index} className="glass rounded-xl overflow-hidden hover:scale-[1.02] transition-all duration-300 group flex flex-col">
+            <div className="p-6 flex-1 space-y-4">
+              <div className="flex justify-between items-start">
+                <div className="space-y-1">
+                  <span className="text-xs font-medium text-primary px-2 py-1 rounded-full bg-primary/10 border border-primary/20">
+                    {project.type}
+                  </span>
+                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors pt-2">
+                    {project.title}
+                  </h3>
+                </div>
+                {/* @ts-ignore */}
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                    <Github className="w-5 h-5" />
+                  </a>
+                )}
               </div>
-              <div
-                className={`ml-4 flex-shrink-0 transition-transform duration-300 ${expandedProjects.includes(index) ? "rotate-180" : "rotate-0"
-                  }`}
+
+              <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((tech, i) => (
+                  <span key={i} className="text-xs text-muted-foreground bg-secondary/50 px-2 py-1 rounded border border-border">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="p-4 border-t border-border/50 bg-secondary/30 flex items-center justify-between">
+              <button
+                onClick={() => toggleProject(index)}
+                className="text-sm text-primary font-medium flex items-center gap-1 hover:gap-2 transition-all"
               >
-                <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
-              </div>
-            </button>
+                View Details <span className="text-lg">→</span>
+              </button>
+              {/* @ts-ignore */}
+              {project.report && (
+                <a href={project.report} target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" /> Report Available
+                </a>
+              )}
+            </div>
 
-            {/* Project Details - Conditionally Rendered */}
+            {/* Expanded Details Overlay */}
             {expandedProjects.includes(index) && (
-              <div className="px-6 pb-6 space-y-4 border-t border-border/50">
-                {/* Description */}
-                <p className="text-muted-foreground leading-relaxed">{project.description}</p>
-
-                {/* Highlights */}
-                <div className="space-y-2">
+              <div className="absolute inset-0 bg-background/95 backdrop-blur-xl p-6 flex flex-col z-10 animate-in fade-in zoom-in-95 duration-200">
+                <div className="flex justify-between items-start mb-4">
+                  <h4 className="text-lg font-bold text-foreground">Key Highlights</h4>
+                  <button onClick={() => toggleProject(index)} className="text-muted-foreground hover:text-foreground">
+                    ✕
+                  </button>
+                </div>
+                <ul className="space-y-3 flex-1 overflow-y-auto">
                   {project.highlights.map((highlight, i) => (
-                    <div key={i} className="flex gap-2 text-sm text-muted-foreground">
-                      <span className="text-accent flex-shrink-0">✓</span>
+                    <li key={i} className="flex gap-3 text-sm text-muted-foreground">
+                      <span className="text-primary flex-shrink-0">✓</span>
                       <span>{highlight}</span>
-                    </div>
+                    </li>
                   ))}
-                </div>
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 text-xs rounded-full bg-primary/20 text-accent border border-accent/30 font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Actions */}
-                <div className="flex flex-wrap gap-3 pt-4">
+                </ul>
+                <div className="pt-4 mt-4 border-t border-border">
                   {/* @ts-ignore */}
                   {project.report && (
                     <a
@@ -147,26 +160,9 @@ export default function Projects() {
                       href={project.report}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors font-medium text-sm"
+                      className="w-full py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors font-medium text-sm flex items-center justify-center gap-2"
                     >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                      View Security Report
-                    </a>
-                  )}
-
-                  {/* @ts-ignore */}
-                  {project.github && (
-                    <a
-                      /* @ts-ignore */
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/50 text-foreground rounded-lg hover:bg-secondary transition-colors font-medium text-sm border border-border"
-                    >
-                      <Github className="w-4 h-4" />
-                      View Source
+                      View Full Security Report
                     </a>
                   )}
                 </div>

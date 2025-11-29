@@ -18,7 +18,7 @@ import {
   Award
 } from "lucide-react"
 import { useClickRipple } from "@/components/click-ripple"
-import { ThreeBackground } from "@/components/three-background"
+import { LiquidEffectAnimation } from "@/components/ui/liquid-effect-animation"
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("about")
@@ -66,20 +66,10 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-background flex flex-col overflow-hidden">
-      <ThreeBackground />
+    <div className="min-h-screen flex flex-col overflow-hidden">
+      <LiquidEffectAnimation />
 
-      <div
-        className="fixed inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(6, 182, 212, 0.1), transparent 80%)`,
-          transition: "background 0.1s ease-out",
-          zIndex: 1,
-        }}
-      />
-
-
-      <main className="flex flex-1 relative z-20 pt-16 md:pt-0">
+      <div className="relative z-10 flex flex-col md:flex-row min-h-screen">
         {/* Mobile Top Navigation */}
         <div className="fixed top-0 left-0 w-full h-16 bg-card/80 backdrop-blur-md border-b border-border z-50 flex items-center justify-between px-4 md:hidden">
           <div className="flex items-center gap-3">
@@ -183,7 +173,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   )
 }

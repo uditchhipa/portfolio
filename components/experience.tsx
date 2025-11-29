@@ -45,77 +45,54 @@ export default function Experience() {
         <p className="text-muted-foreground">Professional journey in cybersecurity</p>
       </div>
 
-      <div className="border border-border rounded-lg overflow-hidden bg-card">
-        <button
-          onClick={() => setExpandedExp(!expandedExp)}
-          className="w-full p-6 flex items-center justify-between hover:bg-card/80 transition-colors text-left"
-        >
-          <h3 className="text-2xl font-bold text-foreground">My Experience</h3>
-          <div className={`flex-shrink-0 transition-transform duration-300 ${expandedExp ? "rotate-180" : "rotate-0"}`}>
-            <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </div>
-        </button>
+      {/* Experience Timeline */}
+      <div className="relative border-l-2 border-primary/20 ml-3 md:ml-6 space-y-12 pb-12">
+        {experiences.map((exp, index) => (
+          <div key={index} className="relative pl-8 md:pl-12">
+            {/* Timeline Dot */}
+            <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-background shadow-sm" />
 
-        {/* Experience Cards - Conditionally Rendered */}
-        {expandedExp && (
-          <div className="px-6 pb-6 space-y-6 border-t border-border/50">
-            {experiences.map((exp, index) => (
-              <div key={index} className="space-y-4">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h4 className="text-xl font-bold text-foreground">{exp.title}</h4>
-                    <p className="text-accent font-medium">{exp.company}</p>
-                    <p className="text-sm text-muted-foreground">{exp.type}</p>
-                  </div>
-                  <span className="text-sm text-muted-foreground font-mono flex-shrink-0">{exp.period}</span>
+            <div className="glass p-6 rounded-xl hover:bg-white transition-colors group">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">{exp.title}</h3>
+                  <p className="text-cyan-600 font-medium">{exp.company}</p>
                 </div>
-
-                <ul className="space-y-2">
-                  {exp.achievements.map((achievement, i) => (
-                    <li key={i} className="flex gap-3 text-muted-foreground">
-                      <span className="text-accent flex-shrink-0">→</span>
-                      <span>{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="text-right">
+                  <span className="inline-block px-3 py-1 rounded-full bg-secondary text-xs font-mono text-muted-foreground border border-border">
+                    {exp.period}
+                  </span>
+                  <p className="text-xs text-muted-foreground mt-1">{exp.type}</p>
+                </div>
               </div>
-            ))}
-          </div>
-        )}
-      </div>
 
-      <div className="border border-border rounded-lg overflow-hidden bg-card">
-        <button
-          onClick={() => setExpandedAch(!expandedAch)}
-          className="w-full p-6 flex items-center justify-between hover:bg-card/80 transition-colors text-left"
-        >
-          <h3 className="text-2xl font-bold text-foreground">Achievements</h3>
-          <div className={`flex-shrink-0 transition-transform duration-300 ${expandedAch ? "rotate-180" : "rotate-0"}`}>
-            <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </div>
-        </button>
-
-        {/* Achievements Grid - Conditionally Rendered */}
-        {expandedAch && (
-          <div className="px-6 pb-6 border-t border-border/50">
-            <div className="grid md:grid-cols-3 gap-4">
-              {achievements.map((ach, index) => (
-                <div
-                  key={index}
-                  className="p-4 rounded-lg border border-border/50 bg-background hover:border-accent/50 transition-all"
-                >
-                  <div className="text-3xl mb-2">{ach.icon}</div>
-                  <h4 className="font-bold text-foreground mb-2">{ach.category}</h4>
-                  <p className="text-sm text-muted-foreground">{ach.detail}</p>
-                </div>
-              ))}
+              <ul className="space-y-3">
+                {exp.achievements.map((achievement, i) => (
+                  <li key={i} className="flex gap-3 text-sm text-muted-foreground">
+                    <span className="text-primary mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <span className="leading-relaxed">{achievement}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-        )}
+        ))}
+      </div>
+
+      <div className="space-y-6">
+        <h3 className="text-2xl font-bold text-foreground pl-2 border-l-4 border-primary">Achievements</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          {achievements.map((ach, index) => (
+            <div
+              key={index}
+              className="glass p-6 rounded-xl hover:scale-105 transition-transform duration-300 group"
+            >
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{ach.icon}</div>
+              <h4 className="font-bold text-foreground mb-2 group-hover:text-primary transition-colors">{ach.category}</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{ach.detail}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
