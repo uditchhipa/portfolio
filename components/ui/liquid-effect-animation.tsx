@@ -23,9 +23,15 @@ export function LiquidEffectAnimation() {
         app.liquidPlane.uniforms.displacementScale.value = 5;
         app.setRain(false);
         
-        // Performance Optimization: Cap pixel ratio to 1 to reduce GPU load on high-DPI devices
+        // CRITICAL PERFORMANCE FIX: Force low resolution
         if (app.renderer) {
-            app.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
+            const pixelRatio = Math.min(window.devicePixelRatio, 2) * 0.5; // Target effective 0.5x-1x
+            app.renderer.setPixelRatio(pixelRatio);
+            
+            // iOS FIX: Explicitly set size on init
+            const width = canvas.clientWidth || window.innerWidth;
+            const height = canvas.clientHeight || window.innerHeight;
+            app.renderer.setSize(width, height, false);
         }
         
         window.__liquidApp = app;
@@ -40,22 +46,29 @@ export function LiquidEffectAnimation() {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         if (canvasRef.current && window.__liquidApp) {
-          // Optional: Manually trigger resize if needed, but CSS usually handles it.
-          // We just want to prevent excessive firing.
           if (window.__liquidApp.renderer) {
             const canvas = canvasRef.current;
-            const width = canvas.clientWidth;
-            const height = canvas.clientHeight;
+            const width = canvas.clientWidth || window.innerWidth;
+            const height = canvas.clientHeight || window.innerHeight;
             window.__liquidApp.renderer.setSize(width, height, false);
+
+            // Re-apply low pixel ratio on resize just in case
+            const pixelRatio = Math.min(window.devicePixelRatio, 2) * 0.5;
+            window.__liquidApp.renderer.setPixelRatio(pixelRatio);
           }
         }
-      }, 200); // Debounce by 200ms
+      }, 200);
     }
 
+    // iOS FIX: Trigger resize on mount to ensure correct sizing
+    setTimeout(handleResize, 100);
+
     window.addEventListener('resize', handleResize)
+    window.addEventListener('orientationchange', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize)
+      window.removeEventListener('orientationchange', handleResize);
       clearTimeout(resizeTimeout);
       if (window.__liquidApp && window.__liquidApp.dispose) {
         window.__liquidApp.dispose()
