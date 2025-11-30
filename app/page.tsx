@@ -1,13 +1,13 @@
 "use client"
 
 import Link from "next/link"
-import { ShaderBackground } from "@/components/ui/shader-background"
+import { ParticlesBackground } from "@/components/ui/particles-background"
 
 export default function LandingPage() {
     return (
-        <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+        <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent">
             {/* Background */}
-            <ShaderBackground />
+            <ParticlesBackground />
 
             {/* Content Overlay */}
             <div className="relative z-10 text-center space-y-8 p-4">
