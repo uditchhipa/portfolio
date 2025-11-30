@@ -45,18 +45,20 @@ export default function Hero() {
                   </svg>
                 </div>
 
-                <p className="text-lg md:text-xl text-muted-foreground font-medium max-w-2xl">
-                  Security Engineer & Full Stack Developer crafting robust, secure, and scalable digital solutions.
+                <p className="text-sm md:text-base text-primary font-bold tracking-wide uppercase">
+                  Security Engineer | Developer | Ethical Hacker | Pentester | Cloud-Native Security
                 </p>
+
+
 
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm text-muted-foreground pt-2">
                   <div className="flex items-center gap-2">
                     <Smartphone className="w-4 h-4 text-primary" />
-                    <span>+91 98765 43210</span>
+                    <span>+91 78520 91947</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Mail className="w-4 h-4 text-primary" />
-                    <span>udit.chhipa@example.com</span>
+                    <span>udit7852@gmail.com</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-green-500" />
@@ -67,7 +69,7 @@ export default function Hero() {
 
               {/* Badges */}
               <div className="flex flex-wrap justify-center md:justify-start gap-2 pt-2">
-                {["Network Security", "Penetration Testing", "Full Stack Dev", "Cloud Security", "Python", "Go"].map((skill) => (
+                {["Network Security", "Penetration Testing", "Cloud Security", "Python", "Go"].map((skill) => (
                   <span key={skill} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold border border-primary/20 hover:bg-primary/20 transition-colors cursor-default shadow-sm">
                     {skill}
                   </span>

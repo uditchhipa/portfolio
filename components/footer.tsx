@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail, Instagram, Facebook, Twitter } from "lucide-rea
 export default function Footer() {
   return (
     <footer
-      className="border-t border-border bg-card/50 transition-all duration-300"
+      className="border-t border-border glass transition-all duration-300"
     >
       <div className="max-w-full px-6 lg:px-12 py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">

@@ -17,18 +17,46 @@ export function LiquidEffectAnimation() {
       const canvas = document.getElementById('liquid-canvas');
       if (canvas) {
         const app = LiquidBackground(canvas);
-        app.loadImage('https://images.unsplash.com/photo-1505144808419-1957a94ca61e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        app.loadImage('/mesmerizing.avif');
         app.liquidPlane.material.metalness = 0.75;
         app.liquidPlane.material.roughness = 0.25;
         app.liquidPlane.uniforms.displacementScale.value = 5;
         app.setRain(false);
+        
+        // Performance Optimization: Cap pixel ratio to 1 to reduce GPU load on high-DPI devices
+        if (app.renderer) {
+            app.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
+        }
+        
         window.__liquidApp = app;
       }
     `
 
     document.body.appendChild(script)
 
+    let resizeTimeout: NodeJS.Timeout;
+
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        if (canvasRef.current && window.__liquidApp) {
+          // Optional: Manually trigger resize if needed, but CSS usually handles it.
+          // We just want to prevent excessive firing.
+          if (window.__liquidApp.renderer) {
+            const canvas = canvasRef.current;
+            const width = canvas.clientWidth;
+            const height = canvas.clientHeight;
+            window.__liquidApp.renderer.setSize(width, height, false);
+          }
+        }
+      }, 200); // Debounce by 200ms
+    }
+
+    window.addEventListener('resize', handleResize)
+
     return () => {
+      window.removeEventListener('resize', handleResize)
+      clearTimeout(resizeTimeout);
       if (window.__liquidApp && window.__liquidApp.dispose) {
         window.__liquidApp.dispose()
       }
@@ -38,7 +66,7 @@ export function LiquidEffectAnimation() {
 
   return (
     <div
-      className="fixed inset-0 m-0 w-full h-full touch-none overflow-hidden"
+      className="fixed inset-0 m-0 w-full h-full overflow-hidden"
       style={{ fontFamily: '"Montserrat", serif', zIndex: 0 }}
     >
       <canvas ref={canvasRef} id="liquid-canvas" className="fixed inset-0 w-full h-full" />

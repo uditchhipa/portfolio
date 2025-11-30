@@ -55,7 +55,7 @@ export default function Skills() {
       </div>
 
       {/* Continuous Learning */}
-      <div className="p-6 rounded-lg border border-border bg-card/50">
+      <div className="p-6 rounded-lg glass">
         <h3 className="text-lg font-bold text-foreground mb-3">Continuous Learning</h3>
         <p className="text-muted-foreground mb-4">
           Active learner on platforms like HackTheBox, TryHackMe, and LeetCode. Constantly exploring new threat
