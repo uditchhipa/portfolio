@@ -18,7 +18,7 @@ import {
   Award
 } from "lucide-react"
 import { useClickRipple } from "@/components/click-ripple"
-import { ParticlesBackground } from "@/components/ui/particles-background"
+import { WaveBackground } from "@/components/ui/wave-background"
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("about")
@@ -67,7 +67,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col overflow-hidden">
-      <ParticlesBackground />
+      <WaveBackground />
 
       <div className="relative z-10 flex flex-col md:flex-row min-h-screen">
         {/* Mobile Top Navigation */}
