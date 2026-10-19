@@ -165,10 +165,25 @@ p { text-wrap: pretty; margin: 0; }
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--f-display);
   font-weight: 700;
   font-size: 19px;
   letter-spacing: -.02em;
+}
+
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 4px 8px rgba(46,58,255,.25));
+  transition: transform .35s var(--spring);
+}
+
+.brand:hover .brand-mark {
+  transform: rotate(-8deg) scale(1.08);
 }
 
 .nav-links {
