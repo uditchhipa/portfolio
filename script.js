@@ -210,19 +210,20 @@ const QUESTS = {
   },
   android: {
     id: "android",
-    title: "Android Research C2 Implant in C",
-    meta: "Offensive Research · Live · 2025 – Present",
-    line: "Low-level mobile research implant built in pure C with multi-channel fallback.",
+    title: "Android Platform Security Research",
+    meta: "Advanced Threat Emulation Framework · 2025 – Present",
+    line: "Controlled Android research component for studying system behavior and detection coverage.",
     facts: [
       ["Language", "C / POSIX / NDK"],
-      ["Channels", "HTTPS · DNS · Telegram Dead-Drop · TCP"],
-      ["Target", "ARM64 Android Internals"],
+      ["Platform", "Android"],
+      ["Role", "Framework research component"],
+      ["Focus", "System behavior and detection coverage"],
       ["Status", "Active Research"]
     ],
     process: [
-      ["Problem", "Mobile endpoint detection mechanisms (EDR/MDR) increasingly monitor standard socket calls and Java/JNI layer telemetry, leaving gaps in how low-level native payloads operate under constrained mobile environments."],
-      ["Approach", "Engineered a native C implant with zero external dependencies. Integrated multi-channel command & control logic with automated fallback: if direct HTTPS is blocked, it resolves instructions via DNS TXT records or encrypted Telegram dead-drops."],
-      ["Outcome", "Validated persistent, resilient command execution across sandbox environments with minimal memory footprint and zero Java runtime signatures."]
+      ["Problem", "Security research across mobile platforms requires repeatable experiments that make system behavior and detection coverage easier to compare."],
+      ["Approach", "Developed the Android component as part of a broader multi-platform framework and documented observations, test conditions, and defensive research findings."],
+      ["Outcome", "Created a reusable Android research track that supports comparison with the framework's Windows components."]
     ]
   },
   shadowfox: {
@@ -260,19 +261,19 @@ const QUESTS = {
   },
   ollama: {
     id: "ollama",
-    title: "Local Ollama Crime Classification",
-    meta: "Zero-Cloud ML · Live · 2026",
-    line: "Air-gapped machine learning pipeline classifying illicit marketplace chatter.",
+    title: "Local Qwen Analysis for Telemon",
+    meta: "Telemon · NLP Research · 2026",
+    line: "Local language-model analysis for message classification and research triage.",
     facts: [
-      ["Architecture", "Local-first Ollama (Llama 3 / Mistral)"],
-      ["Privacy", "100% Air-gapped · Zero Cloud Leaks"],
-      ["Pipeline", "SQLite evidence storage · Flask API"],
-      ["Status", "Production Component of TeleGuard"]
+      ["Architecture", "Local Qwen 70B inference"],
+      ["Pipeline", "Python · Telegram OSINT · NLP"],
+      ["Analysis", "Sentiment and role/entity classification"],
+      ["Status", "Research Component of Telemon"]
     ],
     process: [
-      ["Problem", "Law enforcement and sensitive forensic investigations cannot transmit suspect criminal chat logs or sensitive intelligence to third-party cloud LLM APIs due to privacy and legal evidentiary integrity."],
-      ["Approach", "Configured local Ollama instances running quantized open-source models with prompt-engineering templates that extract entities, criminal offers, and suspect handles completely offline on investigative workstations."],
-      ["Outcome", "100% evidentiary integrity preserved with zero outbound internet traffic during classification, cutting manual review time by 95%."]
+      ["Problem", "Large-scale channel research needs consistent message classification and triage before investigators review the collected material."],
+      ["Approach", "Used a local Qwen 70B model with Python workflows to support sentiment analysis, message categorization, and role/entity classification within the Telemon pipeline."],
+      ["Outcome", "Supported a one-week authorized collection that indexed approximately 700 channels, 11,000 APK artifacts, and 15,000 associated users for analysis."]
     ]
   },
   ctf: {
