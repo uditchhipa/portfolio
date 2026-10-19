@@ -1,14 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
-  <title id="title">Udit Chhipa mark</title>
-  <desc id="desc">A friendly shield and cursor mark representing secure research and building.</desc>
-  <defs>
-    <linearGradient id="g" x1="8" y1="8" x2="56" y2="58" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFD23A"/>
-      <stop offset="1" stop-color="#FF9F43"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="18" fill="#2E3AFF"/>
-  <path d="M32 9 51 17v14c0 12-7.8 20.6-19 25C20.8 51.6 13 43 13 31V17l19-8Z" fill="url(#g)"/>
-  <path d="m24 26 17 8-9 3-3 9-5-20Z" fill="#121211"/>
-  <circle cx="42" cy="23" r="3" fill="#fff" opacity=".9"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Udit Chhipa monogram</title>
+  <rect width="64" height="64" rx="16" fill="#2E3AFF"/>
+  <text x="32" y="42" text-anchor="middle" fill="#FFD23A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="28" font-weight="700">u/</text>
 </svg>

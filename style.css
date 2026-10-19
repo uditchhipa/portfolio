@@ -175,10 +175,19 @@ p { text-wrap: pretty; margin: 0; }
 }
 
 .brand-mark {
+  display: inline-grid;
+  place-items: center;
   width: 32px;
   height: 32px;
   flex: 0 0 auto;
-  filter: drop-shadow(0 4px 8px rgba(46,58,255,.25));
+  color: var(--yellow);
+  background: var(--blue);
+  border-radius: 9px;
+  font-family: var(--f-mono);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -.12em;
+  line-height: 1;
   transition: transform .35s var(--spring);
 }
 
