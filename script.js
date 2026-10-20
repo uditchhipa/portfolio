@@ -191,30 +191,12 @@ function initCursorPill() {
    5. SIDE QUESTS MODAL DIALOG
    ========================================================================== */
 const QUESTS = {
-  weapon: {
-    id: "weapon",
-    title: "VLM Weapon & Threat Detection",
-    meta: "Rajasthan Police HQ · Research · 2026",
-    line: "Vision-Language Models tailored on domain-specific illicit weapons and contraband.",
-    facts: [
-      ["Organization", "Rajasthan Police (Cyber Crime Branch)"],
-      ["Stack", "PyTorch · Vision-LLM · OpenCV · FastAPI"],
-      ["Status", "Presented to Cyber Crime leadership"],
-      ["Recognition", "Letter of Recommendation from HQ"]
-    ],
-    process: [
-      ["Problem", "Underground trafficking channels on encrypted platforms distribute illicit firearms and contraband across thousands of daily media uploads. Manual monitoring by cyber detectives creates severe investigation bottlenecks."],
-      ["Approach", "Fine-tuned lightweight Vision-Language Models (VLMs) on domain-specific contraband and weapons datasets. Designed a low-latency frame extraction and zero-shot bounding-box pipeline capable of classifying high-risk media in real-time."],
-      ["Outcome", "Delivered automated threat tagging with high recall. Research prototype demonstrated to Cyber Crime leadership, earning a formal Letter of Recommendation from Rajasthan Police HQ."]
-    ]
-  },
   android: {
     id: "android",
     title: "Android Platform Security Research",
     meta: "Advanced Threat Emulation Framework · 2025 – Present",
     line: "Controlled Android research component for studying system behavior and detection coverage.",
     facts: [
-      ["Language", "C / POSIX / NDK"],
       ["Platform", "Android"],
       ["Role", "Framework research component"],
       ["Focus", "System behavior and detection coverage"],
@@ -230,33 +212,16 @@ const QUESTS = {
     id: "shadowfox",
     title: "Web App Vulnerability Assessment Lab",
     meta: "ShadowFox · Remote · 2025",
-    line: "Penetration testing and authentication flaw reconnaissance across live APIs.",
+    line: "Web application and REST API security assessments during a remote cybersecurity internship.",
     facts: [
       ["Role", "Cyber Security Intern"],
       ["Arsenal", "Burp Suite · Nessus · Nmap · REST APIs"],
-      ["Scope", "Auth Flaws, Misconfigurations, IDOR"],
+      ["Focus", "Web application and REST API testing"],
       ["Status", "Completed"]
     ],
     process: [
-      ["Problem", "Modern REST API endpoints often suffer from broken object level authorization (BOLA/IDOR), insecure token handshakes, and perimeter service misconfigurations."],
-      ["Approach", "Conducted structured vulnerability assessments utilizing Burp Suite Professional, Nessus compliance scanners, and automated Nmap port scripting across staging environments."],
-      ["Outcome", "Documented and reported high-severity authentication bypass vectors and misconfigurations, producing actionable remediation roadmaps."]
-    ]
-  },
-  pcap: {
-    id: "pcap",
-    title: "Wireshark Network Traffic & Forensics",
-    meta: "Incident Response · Forensics · 2025",
-    line: "Deep packet inspection and threat beaconing extraction from raw PCAPs.",
-    facts: [
-      ["Tooling", "Wireshark · TShark · Python Scapy"],
-      ["Focus", "DNS Exfiltration & C2 Anomaly Analysis"],
-      ["Status", "Research Completed"]
-    ],
-    process: [
-      ["Problem", "Stealthy malware strains blend malicious command callbacks into ordinary DNS and TLS traffic, making perimeter firewall detection difficult."],
-      ["Approach", "Created automated packet parsing routines in Scapy and Wireshark filters to identify high-entropy DNS request bursts, abnormal TLS handshake certificates, and beaconing periodicity."],
-      ["Outcome", "Established reliable threat hunting playbooks that isolate malicious endpoints from multi-gigabyte packet capture files in minutes."]
+      ["Approach", "Conducted web application and REST API security assessments using Burp Suite, Nessus, and Nmap."],
+      ["Outcome", "Documented security findings and remediation recommendations, performed OSINT reconnaissance, and analyzed network traffic with Wireshark."]
     ]
   },
   ollama: {
@@ -278,25 +243,21 @@ const QUESTS = {
   },
   ctf: {
     id: "ctf",
-    title: "Capture The Flag (CTF) Exploit Suite",
+    title: "Capture The Flag (CTF) Achievement",
     meta: "Competitive Security · Awarded · 2024",
     line: "Secured 6th position at Jaipur National University CTF competition.",
     facts: [
       ["Achievement", "6th Place Rank in University CTF"],
-      ["Categories", "Binary Exploitation · Web · Reverse Eng · Forensics"],
-      ["Arsenal", "Ghidra · GDB · Pwntools · Python"],
       ["Host", "Jaipur National University"]
     ],
     process: [
-      ["Problem", "Competitive CTFs require real-time reverse engineering of compiled binaries, memory corruption exploits, cryptographic challenge cracking, and hidden flag discovery under strict time limits."],
-      ["Approach", "Developed rapid-fire Python exploit harnesses using Pwntools, decompiled stripped binaries using Ghidra, and analyzed format string vulnerabilities and buffer overflows."],
-      ["Outcome", "Achieved 6th position university-wide, solving complex multi-stage forensic challenges under rigorous timed competition."]
+      ["Outcome", "Achieved 6th place in a university-wide Capture the Flag competition."]
     ]
   }
 };
 
-const QUEST_ORDER = ["weapon", "android", "shadowfox", "pcap", "ollama", "ctf"];
-let currentQuestId = "weapon";
+const QUEST_ORDER = ["android", "shadowfox", "ollama", "ctf"];
+let currentQuestId = "android";
 
 function initSideQuests() {
   const qm = document.getElementById('qm');
