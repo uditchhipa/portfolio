@@ -952,6 +952,107 @@ section { scroll-margin-top: 72px; }
   border-bottom: 1px solid currentColor;
 }
 
+/* TELEMON high-level architecture */
+.telemon-architecture {
+  grid-column: 1 / -1;
+  margin-top: -8px;
+  padding: clamp(24px, 3.4vw, 42px);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--surface) 82%, var(--t-mint));
+  box-shadow: var(--shadow);
+}
+
+.telemon-architecture-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+  gap: 24px 48px;
+  align-items: end;
+}
+
+.telemon-architecture-head .mono,
+.telemon-stage-no {
+  color: var(--ok);
+}
+
+.telemon-architecture h3 {
+  max-width: 24ch;
+  margin-top: 8px;
+  font-family: var(--f-display);
+  font-size: clamp(25px, 2.5vw, 36px);
+  line-height: 1.05;
+  letter-spacing: -.035em;
+}
+
+.telemon-architecture-head > p {
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.telemon-flow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr) 34px minmax(0, 1fr) 34px minmax(0, 1fr);
+  gap: 10px;
+  align-items: stretch;
+  margin-top: 32px;
+}
+
+.telemon-stage {
+  min-height: 176px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+}
+
+.telemon-stage.is-analysis {
+  background: var(--band);
+  color: var(--band-ink);
+  border-color: var(--band);
+}
+
+.telemon-stage.is-analysis .telemon-stage-no { color: #78DCA1; }
+
+.telemon-stage h4 {
+  margin: auto 0 8px;
+  font-family: var(--f-display);
+  font-size: 20px;
+  letter-spacing: -.025em;
+}
+
+.telemon-stage p {
+  color: var(--ink-2);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.telemon-stage.is-analysis p { color: var(--band-ink-2); }
+
+.telemon-arrow {
+  display: grid;
+  place-items: center;
+  color: var(--ink-3);
+}
+
+.telemon-arrow svg {
+  width: 28px;
+  height: 16px;
+}
+
+.telemon-architecture-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  color: var(--ink-2);
+  font-size: 13.5px;
+}
+
+.telemon-architecture-note span { color: var(--ok); }
+
 /* ==========================================================================
    SIDE QUESTS (GRID & MODAL CARDS)
    ========================================================================== */
@@ -1553,6 +1654,24 @@ dialog.qm::backdrop {
   .collage { min-height: 420px; }
   .ledger { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .ledger div { border-right: none; margin-right: 0; }
+  .telemon-architecture-head { grid-template-columns: 1fr; }
+  .telemon-flow {
+    grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr);
+    grid-template-rows: auto 28px auto;
+  }
+  .telemon-flow .telemon-arrow:nth-of-type(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .telemon-flow .telemon-arrow:nth-of-type(4) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    transform: rotate(90deg);
+  }
+  .telemon-flow .telemon-arrow:nth-of-type(6) {
+    grid-column: 2;
+    grid-row: 3;
+  }
   .quest-grid { grid-template-columns: repeat(2, 1fr); }
   .qm-card { grid-template-columns: 1fr; height: 90vh; }
   .qm-media { display: none; }
@@ -1564,4 +1683,19 @@ dialog.qm::backdrop {
   .ledger { grid-template-columns: 1fr; }
   .display { font-size: 60px; }
   .foot-in { grid-template-columns: 1fr; }
+  .telemon-flow {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    gap: 8px;
+  }
+  .telemon-flow .telemon-arrow,
+  .telemon-flow .telemon-arrow:nth-of-type(2),
+  .telemon-flow .telemon-arrow:nth-of-type(4),
+  .telemon-flow .telemon-arrow:nth-of-type(6) {
+    grid-column: auto;
+    grid-row: auto;
+    height: 24px;
+    transform: rotate(90deg);
+  }
+  .telemon-stage { min-height: 0; }
 }
